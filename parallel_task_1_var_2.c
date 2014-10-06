@@ -4,7 +4,7 @@
 #define Max(a,b) ((a)>(b)?(a):(b)) 
 #define N 256 
 
-#define OMP 0
+#define OMP 1
 
 double maxeps = 0.1e-7; 
 int itmax = 100; 
@@ -42,6 +42,9 @@ int main(int an, char **as) {
  	return 0; 
 } 
 void init() { 
+#if (OMP)
+	#pragma omp parallel for private(i,j,k)
+#endif
  	for(i=0; i<=N-1; i++) { 
  		for(j=0; j<=N-1; j++) { 
  			for(k=0; k<=N-1; k++) { 
