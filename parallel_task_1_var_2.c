@@ -3,6 +3,9 @@
 #include <stdio.h> 
 #define Max(a,b) ((a)>(b)?(a):(b)) 
 #define N 256 
+
+#define OMP 0
+
 double maxeps = 0.1e-7; 
 int itmax = 100; 
 int i,j,k; 
@@ -16,8 +19,11 @@ int main(int an, char **as) {
 	int it; 
  	double time0, time1; 
  	init(); 
- 	/* time0=omp_get_wtime (); */ 
+#if (OMP) 
+ 	time0=omp_get_wtime ();
+#else
  	wtime(&time0); 
+#endif
  	for(it=1; it<=itmax; it++) { 
  		eps = 0.;
  		relax(); 
@@ -26,8 +32,11 @@ int main(int an, char **as) {
  			break;
  		} 
  	} 
+#if (OMP) 
+ 	time1=omp_get_wtime ();
+#else
  	wtime(&time1); 
- 	/* time1=omp_get_wtime (); */ 
+#endif 
  	printf("Time in seconds=%gs\t",time1-time0); 
  	verify(); 
  	return 0; 
