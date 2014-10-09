@@ -17,9 +17,9 @@ Solution of Dirihlet task
     <td>S = 789140100.274497</td>
   </tr>
   <tr>
-    <td>Time(sec)=66.1057s</td>
+    <td>Time(sec)=66.3202s</td>
     <td>S = 789140100.274497</td>
-    <td>Time(sec)=69.8011s</td>
+    <td>Time(sec)=65.6133s</td>
     <td>S = 789140100.274497</td>
   </tr>
 </table>
