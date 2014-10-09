@@ -63,34 +63,47 @@ void init() {
  	} 
 } 
 void relax() { 
- for(i=1; i<=N-2; i++) {
- 	for(j=1; j<=N-2; j++) { 
- 		for(k=1; k<=N-2; k++) { 
- 			A[i][j][k] = (A[i-1][j][k]+A[i+1][j][k])/2.; 
+#pragma omp parallel
+	{
+	double eps_internal = eps;
+	#pragma omp for private(i,j,k)
+	for(i=1; i<=N-2; i++) {
+		for(j=1; j<=N-2; j++) { 
+			for(k=1; k<=N-2; k++) { 
+				A[i][j][k] = (A[i-1][j][k]+A[i+1][j][k])/2.; 
+			}
+		}
+	} 
+	#pragma omp for private(i,j,k)
+	for(i=1; i<=N-2; i++) {
+		for(j=1; j<=N-2; j++) {
+			for(k=1; k<=N-2; k++) { 
+				A[i][j][k] =(A[i][j-1][k]+A[i][j+1][k])/2.; 
+			}
+		}
+	} 
+	#pragma omp for private(i,j,k) nowait
+	for(i=1; i<=N-2; i++) {
+		for(j=1; j<=N-2; j++) {
+			for(k=1; k<=N-2; k++) { 
+				double e; 
+				e=A[i][j][k]; 
+				A[i][j][k] = (A[i][j][k-1]+A[i][j][k+1])/2.; 
+				eps_internal=Max(eps_internal,fabs(e-A[i][j][k])); 
+			}
  		}
  	}
- } 
- for(i=1; i<=N-2; i++) {
- 	for(j=1; j<=N-2; j++) {
- 		for(k=1; k<=N-2; k++) { 
- 			A[i][j][k] =(A[i][j-1][k]+A[i][j+1][k])/2.; 
- 		}
- 	}
- } 
- for(i=1; i<=N-2; i++) {
- 	for(j=1; j<=N-2; j++) {
- 		for(k=1; k<=N-2; k++) { 
- 			double e; 
- 			e=A[i][j][k]; 
- 			A[i][j][k] = (A[i][j][k-1]+A[i][j][k+1])/2.; 
- 			eps=Max(eps,fabs(e-A[i][j][k])); 
- 			}
- 		}
- 	} 
+	#pragma omp critical
+		eps = Max(eps, eps_internal);
+	#pragma omp barrier
+	{}
+	//pragma close
+	}
 } 
 void verify() { 
 	double s; 
  	s=0.; 
+	#pragma omp parallel for private (i, j, k) reduction (+:s)
  	for(i=0; i<=N-1; i++) {
  		for(j=0; j<=N-1; j++) {
  			for(k=0; k<=N-1; k++) { 
