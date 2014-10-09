@@ -39,12 +39,10 @@ int main(int an, char **as) {
  	} 
 #if (OMP) 
  	time1=omp_get_wtime ();
-	printf("(time1, time0) = (%gs, %gs)", time1, time0);
 #else
  	wtime(&time1); 
 #endif 
- 	printf("Time in seconds=%gs\t",time1-time0); 
-	printf("(time1, time0) = (%gs, %gs)", time1, time0);
+ 	printf("Time(sec)=%gs\t",time1-time0); 
  	verify(); 
  	return 0; 
 } 
