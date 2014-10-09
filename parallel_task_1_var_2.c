@@ -1,10 +1,15 @@
 #include <math.h> 
 #include <stdlib.h> 
 #include <stdio.h> 
-#define Max(a,b) ((a)>(b)?(a):(b)) 
-#define N 256 
 
 #define OMP 1
+
+#if (OMP)
+#include <omp.h>
+#endif
+
+#define Max(a,b) ((a)>(b)?(a):(b)) 
+#define N 256 
 
 double maxeps = 0.1e-7; 
 int itmax = 100; 
@@ -34,10 +39,12 @@ int main(int an, char **as) {
  	} 
 #if (OMP) 
  	time1=omp_get_wtime ();
+	printf("(time1, time0) = (%gs, %gs)", time1, time0);
 #else
  	wtime(&time1); 
 #endif 
  	printf("Time in seconds=%gs\t",time1-time0); 
+	printf("(time1, time0) = (%gs, %gs)", time1, time0);
  	verify(); 
  	return 0; 
 } 
