@@ -49,8 +49,8 @@ Solution of Dirihlet task
     <th colspan="12">384x384x384</th>
   </tr>
   <tr>
-    <td></td>
-    <td>S=</td>
+    <td>399.79s</td>
+    <td>S=4441160348.874235</td>
     <td>239.098s</td>
     <td>S=4441160348.874235</td>
     <td>120.566s</td>
@@ -66,8 +66,8 @@ Solution of Dirihlet task
     <th colspan="12">384x384x384</th>
   </tr>
   <tr>
-    <td></td>
-    <td>S=</td>
+    <td>672.965s</td>
+    <td>S=14780896925.508070</td>
     <td>577.393s</td>
     <td>S=14780896925.508070</td>
     <td>283.429s</td>
