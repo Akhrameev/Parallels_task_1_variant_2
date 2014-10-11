@@ -62,4 +62,21 @@ Solution of Dirihlet task
     <td></td>
     <td>S=</td>
   </tr>
+  <tr>
+    <th colspan="12">384x384x384</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td>S=</td>
+    <td>577.393s</td>
+    <td>S=14780896925.508070</td>
+    <td>283.429s</td>
+    <td>S=14780896925.734921</td>
+    <td>163.6s</td>
+    <td>S=14780896925.873995</td>
+    <td>87.6649s</td>
+    <td>S=14780897028.088871</td>
+    <td></td>
+    <td>S=</td>
+  </tr>
 </table>
