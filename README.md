@@ -7,6 +7,9 @@ Solution of Dirihlet task
 
 <table>
   <tr>
+    <th colspan="12">256x256x256</th>
+  </tr>
+  <tr>
     <td colspan="2">Sequentional run (-O2)</td>
     <td colspan="2">OpenMP run (-O2) n=1</td>
     <td colspan="2">OpenMP run (-O2) n=2</td>
