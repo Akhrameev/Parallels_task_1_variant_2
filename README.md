@@ -80,3 +80,9 @@ Solution of Dirihlet task
     <td>S=</td>
   </tr>
 </table>
+
+[Results (rus: pdf)](Results.pdf)
+
+[Graph for cells](graph_cells.png?raw=true)
+
+[Graph for cpus](graph_cpus.png?raw=true)
