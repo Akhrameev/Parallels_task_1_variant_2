@@ -81,8 +81,9 @@ Solution of Dirihlet task
   </tr>
 </table>
 
-[Results (rus: pdf)](Results.pdf)
 
 ![Graph for cells](graph_cells.png?raw=true)
 
 ![Graph for cpus](graph_cpus.png?raw=true)
+
+[Results (rus: pdf)](Results.pdf)
