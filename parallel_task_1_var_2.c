@@ -63,10 +63,14 @@ void init() {
  	} 
 } 
 void relax() { 
-#pragma omp parallel
+#if (OMP)
+	#pragma omp parallel
 	{
+#endif
 	double eps_internal = eps;
+#if (OMP)
 	#pragma omp for private(i,j,k)
+#endif
 	for(i=1; i<=N-2; i++) {
 		for(j=1; j<=N-2; j++) { 
 			for(k=1; k<=N-2; k++) { 
@@ -74,7 +78,9 @@ void relax() {
 			}
 		}
 	} 
+#if (OMP)
 	#pragma omp for private(i,j,k)
+#endif
 	for(i=1; i<=N-2; i++) {
 		for(j=1; j<=N-2; j++) {
 			for(k=1; k<=N-2; k++) { 
@@ -82,7 +88,9 @@ void relax() {
 			}
 		}
 	} 
+#if (OMP)
 	#pragma omp for private(i,j,k) nowait
+#endif
 	for(i=1; i<=N-2; i++) {
 		for(j=1; j<=N-2; j++) {
 			for(k=1; k<=N-2; k++) { 
@@ -93,17 +101,23 @@ void relax() {
 			}
  		}
  	}
+#if (OMP)
 	#pragma omp critical
+#endif
 		eps = Max(eps, eps_internal);
+#if (OMP)
 	#pragma omp barrier
 	{}
 	//pragma close
 	}
+#endif
 } 
 void verify() { 
 	double s; 
  	s=0.; 
+#if (OMP)
 	#pragma omp parallel for private (i, j, k) reduction (+:s)
+#endif
  	for(i=0; i<=N-1; i++) {
  		for(j=0; j<=N-1; j++) {
  			for(k=0; k<=N-1; k++) { 
