@@ -63,7 +63,7 @@ Solution of Dirihlet task
     <td>S=</td>
   </tr>
   <tr>
-    <th colspan="12">384x384x384</th>
+    <th colspan="12">512x512x512</th>
   </tr>
   <tr>
     <td>672.965s</td>
