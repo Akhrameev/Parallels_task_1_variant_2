@@ -87,3 +87,5 @@ Solution of Dirihlet task
 ![Graph for cpus](graph_cpus.png?raw=true)
 
 [Results (rus: pdf)](Results.pdf)
+
+Amazing results: acceleration falls on big tasks.
